@@ -1,0 +1,111 @@
+<div class="bt border-primary">
+    <div class="col-sm-4 bg-default-light">
+        <div class="row text-center" style="height: 40px; background-color: #2b5f92; color: white;font-size: 20px;padding-top: 4px;">USER DETAILS</div>
+        <div style="margin-top: 15px;height: calc(100vh - 112px)">
+            <table class="table" style="background: none">
+                <tbody>
+                    <tr>
+                        <td class="col-sm-4">
+                            <label for="empname" class="control-label" style="margin-top: 9px">User Name :</label>
+                        </td>
+                        <td class="col-sm-8"> 
+                            <input type="text" ng-model="model.name" class="form-control" id="empname">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-4">
+                            <label for="type" class="control-label" style="margin-top: 9px">Password :</label>
+                        </td>
+                        <td class="col-sm-8">
+                            <input type="text" ng-model="model.password" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-4">
+                            <label for="epf" class="control-label" style="margin-top: 9px">User Role:</label>
+                        </td>
+                        <td class="col-sm-8"> 
+                            <select class="form-control" ng-model="model.role" id="epf">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                                <option value="committee">Committee Member</option>
+                                <option value="manager">Manager</option>
+                                <option value="group_user">Group User</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-4">
+                            <label for="department" class="control-label" style="margin-top: 9px">Department :</label>
+                        </td>
+                        <td class="col-sm-8"> 
+                            <input type="text" ng-model="model.department"  class="form-control" id="department" uib-typeahead="department.indexNo as (department.name) for department in departmentList|filter:$viewValue|limitTo:10" typeahead-input-formatter="routeLabel($model)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-8 bg-white ">
+
+        <div style="margin-top: 15px">
+            <div class="col-sm-1">
+                <label class="control-label" style="margin-top: 9px">User</label>
+            </div>
+            <div class="col-sm-5">
+                <input class="form-control" ng-model="searchName" placeholder="Search user..."><br>
+            </div>
+        </div>
+
+        <table class="table" style="margin-bottom: 0px;">
+            <col style="width: 25%">
+            <col style="width: 15%">
+            <col style="width: 15%">
+            <col style="width: 20%">
+            <col style="width: 25%">
+            <thead style="background-color: #eeeeee">
+                <tr>
+                    <td>Name</td>
+                    <td>Role</td>
+                    <td>Password</td>
+                    <td>Department</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="smart-scroll-y" style="height: calc(100vh - 210px);" scrolly="showMore()">
+            <table class="table">
+                <col style="width: 25%">
+                <col style="width: 15%">
+                <col style="width: 15%">
+                <col style="width: 20%">
+                <col style="width: 25%">
+                <tbody>
+                    <tr ng-repeat="user in userList| filter : searchName | limitTo: numLimit">
+                        <td>{{user.name}}</td>
+                        <td>{{user.role}}</td>
+                        <td>{{user.password}}</td>
+                        <td>{{ui.getDepartment(user.department).name}}</td>
+                        <td><button style="margin-left: 5px" class="btn btn-xs btn-danger pull-right" ng-click="http.deleteUser(user)"><span class="glyphicon glyphicon-trash"></span></button>
+                            <button class="btn btn-xs btn-icon pull-right" ng-click="ui.edit(user)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row" style="height: 47px; border-top: 1px solid #cccccc">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-success btn-sm pull-right" style="margin-top: 8px;border-radius: 0px" ng-click="ui.save()">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true" ></span> Save
+                </button>
+                <button type="button" class="btn btn-primary btn-sm pull-right" style="margin-right: 10px;margin-top: 8px;border-radius: 0px" ng-click="ui.clear()">
+                    <span class="glyphicon glyphicon-refresh" aria-hidden="true" ></span> Clear
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

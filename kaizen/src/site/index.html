@@ -1,0 +1,316 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Kaizen</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="images/titel_image.png">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <!--css-->
+        <!-- inject:css -->
+        <!-- endinject -->
+
+    </head>
+
+    <body ng-app="AppModule" ng-controller="IndexController">
+        <div class="app layout-fixed-header">
+            <!-- sidebar panel -->
+            <div class="sidebar-panel offscreen-left">
+
+                <div class="brand">
+
+                    <!-- logo -->
+                    <div class="brand-logo">
+                        <label style="font-size: 18px; color: white">MENU</label>
+                        <!--<img src="images/logo.png" height="15" alt="">-->
+                    </div>
+                    <!-- /logo -->
+
+                    <!-- toggle small sidebar menu -->
+                    <a href="javascript:;" class="toggle-sidebar hidden-xs hamburger-icon v3" data-toggle="layout-small-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                    <!-- /toggle small sidebar menu -->
+                </div>
+                <!-- main navigation -->
+                <nav role="navigation">
+                    <ul class="nav">
+                        <!-- transaction -->
+                        <li ng-hide="UserMode === 'admin'">
+
+                            <!--                            <a href="javascript:;">
+                                                            <i class="fa fa-list-alt"></i>
+                                                            <span>Transaction</span>
+                                                        </a>-->
+
+
+                            <!--<ul  ng-show="UserMode === 'manager' || UserMode === 'committee' || UserMode === 'group_user' || UserMode === 'user'">-->
+                            <i class="sub-menu"></i> 
+                            <a href="#/transaction/kaizen" ng-show="UserMode === 'manager' || UserMode === 'committee' || UserMode === 'group_user' || UserMode === 'user'">
+                                <span>Create Kaizen</span>
+                            </a>
+                            <!--</ul>-->
+                            <i class="sub-menu"></i>
+                            <a href="#/transaction/kaizen-manager-view" ng-show="UserMode === 'manager' || UserMode === 'committee'">
+                                <span>Manager View</span>
+                            </a>
+
+                            <!--</ul>-->
+                            <!--<ul class="sub-menu" ng-show="UserMode === 'committee'">-->
+                            <i class="sub-menu"></i>
+                            <a href="#/transaction/kaizen-committee-view" ng-show="UserMode === 'committee'">
+                                <span>Committee View</span>
+                            </a>
+                            <i class="sub-menu"></i>
+                            <a href="#/master/kaizens">
+                                <span>Kaizens</span>
+                            </a>
+
+                        </li>
+                        <!--</ul>-->
+                        <!-- /transaction-->
+                        <!-- master -->
+                        <li ng-show="UserMode === 'admin'">
+                            <!--                            <a href="javascript:;">
+                                                            <i class="fa fa-cubes"></i>
+                                                            <span>Master </span>
+                                                        </a>-->
+                            <!--<ul class="sub-menu">-->
+                            <!--<li>-->
+                            <i class="sub-menu"></i>
+                            <a href="#/master/employee-registration">
+                                <span>Employee Registration</span>
+                            </a>
+                            <i class="sub-menu"></i>
+                            <a href="#/master/user-registration">
+                                <span>User Registration</span>
+                            </a>
+                            <i class="sub-menu"></i>
+                            <a href="#/master/department">
+                                <span>Create Department</span>
+                            </a>
+                            <i class="sub-menu"></i>
+                            <a href="#/master/create-target">
+                                <span>Create Target</span>
+                            </a>
+                            <i class="sub-menu"></i>
+                            <a href="#/master/create-topkaizen-monthly">
+                                <span>Create Best Kaizen</span>
+                            </a>
+                            <i class="sub-menu"></i>
+                            <a href="#/master/delete-kaizen">
+                                <span>Delete Kaizen</span>
+                            </a>
+                            <!--</li>-->
+                            <!--</ul>-->
+                        </li>
+                        <li> <!--       -->
+                            <a href="javascript:;">
+                                <!--<i class="fa fa-toggle-on"></i>-->
+                                <span>Reports</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <!--                                <li>
+                                                                    <a href="#/reports/summary">
+                                                                        <span>Summary</span>
+                                                                    </a>
+                                                                </li>-->
+                                <li ng-hide="UserMode === 'user'">
+                                    <a href="#/reports/top5-kaizen">
+                                        <span>Top 5 Kaizen</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/reports/top10-kaizen">
+                                        <span>Top 10 Kaizen</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/reports/top-kaizen-monthly">
+                                        <span>Best Kaizens</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#/reports/annual-achievement">
+                                        <span>Annual Achievement</span>
+                                    </a>
+                                </li>
+                                <li ng-hide="UserMode === 'user' || UserMode === 'group_user'">
+                                    <a href="#/reports/evaluated-details">
+                                        <span>Evaluated Details</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/reports/monthly-details">
+                                        <span>Monthly Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- /master-->
+                    </ul>
+                    <!-- /forms -->
+                </nav>
+                <!-- /main navigation -->
+            </div>
+            <!-- /sidebar panel -->
+
+            <!-- content panel -->
+            <div class="main-panel">
+
+                <!-- top header -->
+                <header class="header navbar " >
+
+                    <div class="brand visible-xs">
+                        <!-- toggle offscreen menu -->
+                        <div class="toggle-offscreen">
+                            <a href="#" class="hamburger-icon visible-xs" data-toggle="offscreen" data-move="ltr">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        </div>
+                        <!-- /toggle offscreen menu -->
+
+                        <!-- logo -->
+                        <div class="brand-logo">
+                            <img src="./images/logo-dark.png" height="15" alt="">
+                        </div>
+                        <!-- /logo -->
+
+                        <!-- toggle chat sidebar small screen-->
+                        <div class="toggle-chat">
+                            <a href="javascript:;" class="hamburger-icon v2 visible-xs" data-toggle="layout-chat-open">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        </div>
+                        <!-- /toggle chat sidebar small screen-->
+                    </div>
+
+                    <!--                    <ul class="nav navbar-nav hidden-xs">
+                    
+                                            <li class="mt10">
+                                                <ol class="breadcrumb">
+                                                    <li>
+                                                        <a href="javascript:;"><i class="fa fa-home mr5"></i>Dashboard</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;"><i class="fa fa-toggle-on mr5"></i>Ui Elements</a>
+                                                    </li>
+                                                    <li class="active ng-binding">General Bootstrap Elements</li>
+                                                </ol>
+                                            </li>
+                                        </ul>-->
+
+                    <div class="col-sm-4">
+                        <img style="margin-top: 0px" src="images/3KAZENLOGO.PNG" width="110px" height="50px;"/>
+                        <img style="margin-top: 0px" src="images/LOGO_LINEAAQUA.PNG" width="110px" height="50px"/>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right hidden-xs">
+                        <li ng-show="sendMode === 'loading'">
+                            <img src="images/loading.gif">
+                        </li>
+                        <li ng-show="sendMode === 'loading2'">
+                            <h5 style="margin-left: 32px; margin-bottom: 0px;">Sending</h5>
+                            <img src="images/loading3.gif">
+                        </li>
+
+                        <!--                        <li>
+                                                    <a href="javascript:;" data-toggle="dropdown">
+                                                        <i class="fa fa-bell-o"></i>
+                                                        <div class="status bg-danger border-danger animated bounce"></div>
+                                                    </a>
+                                                    <ul class="dropdown-menu notifications">
+                                                        <li class="notifications-header">
+                                                            <p class="text-muted small">You have 3 new messages</p>
+                                                        </li>
+                                                        <li>
+                                                            <ul class="notifications-list">
+                                                                <li>
+                                                                    <a href="javascript:;">
+                                                                        <span class="pull-left mt2 mr15">
+                                                                            <img src="images/face1.jpg" class="avatar avatar-xs img-circle" alt="">
+                                                                        </span>
+                                                                        <div class="overflow-hidden">
+                                                                            <span>Sean launched a new application</span>
+                                                                            <span class="time">2 seconds ago</span>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">
+                                                                        <div class="pull-left mt2 mr15">
+                                                                            <div class="circle-icon bg-danger">
+                                                                                <i class="fa fa-chain-broken"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="overflow-hidden">
+                                                                            <span>Removed chrome from app list</span>
+                                                                            <span class="time">4 Hours ago</span>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">
+                                                                        <span class="pull-left mt2 mr15">
+                                                                            <img src="images/face3.jpg" class="avatar avatar-xs img-circle" alt="">
+                                                                        </span>
+                                                                        <div class="overflow-hidden">
+                                                                            <span class="text-muted">Jack Hunt has registered</span>
+                                                                            <span class="time">9 hours ago</span>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="notifications-footer">
+                                                            <a href="javascript:;">See all messages</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>-->
+
+                        <li>
+                            <a href="javascript:;" data-toggle="dropdown">
+                                <label class="glyphicon glyphicon-user" style="margin-left: 10px"></label>
+                                <!--<img src="images/face3.jpg" class="header-avatar img-circle ml10" alt="user" title="user">-->
+                                <span class="pull-left">{{globals.currentUser.username}}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!--                                <li>
+                                                                    <a>Settings</a>
+                                                                </li>-->
+                                <li>
+                                    <a href="#/">Logout</a>
+                                </li>
+                            </ul>
+
+                        </li>
+
+                    </ul>
+                </header>
+                <!-- /top header -->
+
+                <!-- main area -->
+                <div class="main-content no-padding bg-white no-margin" ng-view>
+
+                </div><!--
+                <!-- /main area -->
+            </div>
+            <!-- /content panel -->          
+        </div>
+
+        <!--js-->
+        <!-- inject:js -->
+        <!-- endinject -->
+    </body>
+</html>
